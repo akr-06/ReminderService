@@ -4,10 +4,7 @@ const app = express();
 const { PORT } = require('./config/serverConfig');
 
 //const { sendBasicEmail } = require('./services/email-service');
-
 app.use(express.json());
-
-
 
 const setupAndStartServer = () => {
     app.listen(PORT, ()=> {
