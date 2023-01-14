@@ -10,10 +10,14 @@ const TicketController = require('./controllers/ticket-controller');
 app.use(express.json());
 
 const jobs = require('./utils/job');
+const { createChannel } = require('./utils/messageQueue');
 
-const setupAndStartServer = () => {
+const setupAndStartServer = async () => {
+
+    const channel = await createChannel();
 
     app.post('/api/v1/tickets',TicketController.create);
+
 
     app.listen(PORT, ()=> {
         console.log(`Server listening at port ${PORT}`);
